@@ -1,0 +1,190 @@
+{
+  "scenes": [
+    {
+      "id": "node-1",
+      "name": "Entrance Hall",
+      "panorama": "/room1.jpg",
+      "mapCoords": { "x": 30, "y": 70 },
+      "links": [
+        {
+          "nodeId": "node-2",
+          "position": { "pitch": -0.2, "yaw": 0.1 }
+        }
+      ]
+    },
+    {
+      "id": "node-2",
+      "name": "Main Exhibition Gallery",
+      "panorama": "/room2.jpg",
+      "mapCoords": { "x": 50, "y": 40 },
+      "links": [
+        {
+          "nodeId": "node-1",
+          "position": { "pitch": -0.2, "yaw": 3.14 }
+        },
+        {
+          "nodeId": "node-3",
+          "position": { "pitch": -0.18, "yaw": 0.5 }
+        }
+      ]
+    },
+    {
+      "id": "node-3",
+      "name": "Outdoor Courtyard",
+      "panorama": "/room3.jpg",
+      "mapCoords": { "x": 75, "y": 25 },
+      "links": [
+        {
+          "nodeId": "node-2",
+          "position": { "pitch": -0.2, "yaw": 3.1 }
+        }
+      ]
+    }
+  ],
+  "stores": [
+    {
+      "id": "store-1",
+      "name": "Help Desk / Reception",
+      "category": "Information",
+      "badgeColor": "cyan",
+      "nodeId": "node-1",
+      "position": { "pitch": 0.03, "yaw": 0.21 },
+      "hours": "08:00 AM - 10:00 PM",
+      "description": "Main customer service and orientation desk. Speak with airport staff for terminal guidance, accessibility support, and general inquiries.",
+      "highlights": ["Interactive Wayfinding", "Flight Status Check", "Accessibility Assistance"],
+      "image": "/room1.jpg"
+    },
+    {
+      "id": "store-2",
+      "name": "Digital Workspace",
+      "category": "Work Zone",
+      "badgeColor": "purple",
+      "nodeId": "node-1",
+      "position": { "pitch": 0.03, "yaw": 3.89 },
+      "hours": "24 / 7 Available",
+      "description": "Equipped with high-speed Wi-Fi 6, USB-C charging ports, power outlets, and ergonomic seating for travelers looking to work or study.",
+      "highlights": ["High-Speed Wi-Fi 6", "USB-C Charging Hubs", "Quiet Atmosphere"],
+      "image": "/room1.jpg"
+    },
+    {
+      "id": "store-3",
+      "name": "Starbucks Coffee & Bakery",
+      "category": "Dining",
+      "badgeColor": "green",
+      "nodeId": "node-1",
+      "position": { "pitch": -0.05, "yaw": 1.45 },
+      "hours": "06:00 AM - 11:00 PM",
+      "description": "Freshly brewed espresso drinks, iced teas, warm breakfast sandwiches, and artisanal baked goods ready for your journey.",
+      "highlights": ["Mobile Order Pickup", "Fresh Pastries", "Premium Espresso"],
+      "image": "/room1.jpg"
+    },
+    {
+      "id": "store-4",
+      "name": "Samsonite Luggage & Travel",
+      "category": "Fashion",
+      "badgeColor": "amber",
+      "nodeId": "node-1",
+      "position": { "pitch": 0.12, "yaw": 2.75 },
+      "hours": "09:00 AM - 09:00 PM",
+      "description": "Premium suitcases, hardshell carry-ons, anti-theft backpacks, and travel comfort accessories from Samsonite.",
+      "highlights": ["TSA Approved Locks", "Lightweight Suitcases", "Warranty Service"],
+      "image": "/room1.jpg"
+    },
+    {
+      "id": "store-5",
+      "name": "Digital Art Space",
+      "category": "Exhibit",
+      "badgeColor": "amber",
+      "nodeId": "node-2",
+      "position": { "pitch": 0.15, "yaw": 0.8 },
+      "hours": "09:00 AM - 08:00 PM",
+      "description": "A curated immersive digital gallery showcasing periodic table visualizations, interactive science displays, and generative art projections.",
+      "highlights": ["Periodic Table Visualizer", "Interactive Science Display", "4K Projection Walls"],
+      "image": "/room2.jpg"
+    },
+    {
+      "id": "store-6",
+      "name": "Rolex Luxury Timepieces",
+      "category": "Luxury",
+      "badgeColor": "purple",
+      "nodeId": "node-2",
+      "position": { "pitch": 0.05, "yaw": 2.1 },
+      "hours": "10:00 AM - 09:00 PM",
+      "description": "Authorized retailer offering iconic luxury Swiss timepieces, chronometers, and bespoke watchmaking consultations.",
+      "highlights": ["Swiss Certified Chronometers", "VIP Private Viewing", "Tax-Free Shopping"],
+      "image": "/room2.jpg"
+    },
+    {
+      "id": "store-7",
+      "name": "Nike Athletic Hub",
+      "category": "Fashion",
+      "badgeColor": "cyan",
+      "nodeId": "node-2",
+      "position": { "pitch": -0.1, "yaw": 4.1 },
+      "hours": "09:00 AM - 10:00 PM",
+      "description": "Performance running shoes, lifestyle sneakers, tech fleece apparel, and travel activewear from Nike.",
+      "highlights": ["Air Max & Pegasus Line", "Tech Fleece Apparel", "Custom Sneaker Trial"],
+      "image": "/room2.jpg"
+    },
+    {
+      "id": "store-8",
+      "name": "Sephora Beauty & Fragrance",
+      "category": "Beauty",
+      "badgeColor": "purple",
+      "nodeId": "node-2",
+      "position": { "pitch": 0.08, "yaw": 5.4 },
+      "hours": "08:30 AM - 09:30 PM",
+      "description": "World-class skincare, luxury designer perfumes, makeup essentials, and travel mini cosmetics.",
+      "highlights": ["Luxury Designer Fragrances", "Free Skincare Consults", "Travel Mini Sizes"],
+      "image": "/room2.jpg"
+    },
+    {
+      "id": "store-9",
+      "name": "Garden Café & Lounge",
+      "category": "Dining",
+      "badgeColor": "green",
+      "nodeId": "node-3",
+      "position": { "pitch": 0.05, "yaw": 1.2 },
+      "hours": "07:00 AM - 09:00 PM",
+      "description": "Relaxed outdoor courtyard dining offering specialty organic coffee, fresh artisanal pastries, outdoor seating, and natural greenery.",
+      "highlights": ["Specialty Artisan Coffee", "Fresh Organic Menu", "Open-Air Seating Area"],
+      "image": "/room3.jpg"
+    },
+    {
+      "id": "store-10",
+      "name": "Artisan Gelato & Cafe",
+      "category": "Dining",
+      "badgeColor": "green",
+      "nodeId": "node-3",
+      "position": { "pitch": -0.02, "yaw": 2.8 },
+      "hours": "10:00 AM - 10:00 PM",
+      "description": "Handcrafted Italian gelato made daily with fresh local ingredients, espresso affogatos, and sweet crepes.",
+      "highlights": ["Authentic Italian Gelato", "Dairy-Free Sorbet", "Fresh Espresso"],
+      "image": "/room3.jpg"
+    },
+    {
+      "id": "store-11",
+      "name": "Zen Garden Lounge",
+      "category": "Work Zone",
+      "badgeColor": "cyan",
+      "nodeId": "node-3",
+      "position": { "pitch": 0.1, "yaw": 4.5 },
+      "hours": "24 / 7 Available",
+      "description": "A tranquil outdoor relaxation pavilion surrounded by bamboo gardens, ambient water features, and recliners.",
+      "highlights": ["Natural Bamboo Garden", "Ambient Water Features", "Relaxing Recliners"],
+      "image": "/room3.jpg"
+    },
+    {
+      "id": "store-12",
+      "name": "Souvenir & Heritage Pavilion",
+      "category": "Information",
+      "badgeColor": "amber",
+      "nodeId": "node-3",
+      "position": { "pitch": 0.04, "yaw": 5.8 },
+      "hours": "08:00 AM - 09:00 PM",
+      "description": "Local artisanal crafts, regional chocolates, traditional souvenirs, postcards, and memorabilia.",
+      "highlights": ["Local Handcrafted Goods", "Regional Chocolates", "Postcard Shipping"],
+      "image": "/room3.jpg"
+    }
+  ]
+}

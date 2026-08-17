@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive 360 Virtual Kiosk Tour</title>
+
+    <!-- Photo Sphere Viewer Styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin@5/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/virtual-tour-plugin@5/index.css"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+      }
+
+      /* Fullscreen kiosk view */
+      #viewer-container {
+        width: 100vw;
+        height: 100vh;
+      }
+
+      /* Kiosk UI Header Overlay */
+      .kiosk-header {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.65);
+        color: #fff;
+        padding: 15px 25px;
+        border-radius: 12px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        pointer-events: none;
+      }
+
+      .kiosk-header h1 {
+        font-size: 1.4rem;
+        margin-bottom: 4px;
+        font-weight: 600;
+      }
+
+      .kiosk-header p {
+        font-size: 0.9rem;
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Kiosk Title Overlay -->
+    <div class="kiosk-header">
+      <h1>Virtual Location Walkthrough</h1>
+      <p>Drag to look around • Click ground arrows to walk forward</p>
+    </div>
+
+    <!-- Viewer Canvas -->
+    <div id="viewer-container"></div>
+
+    <!-- Photo Sphere Viewer JS Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin@5/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/virtual-tour-plugin@5/index.js"></script>
+
+    <script>
+      // Initialize Photo Sphere Viewer with 3D Virtual Tour Plugin
+      const viewer = new PhotoSphereViewer.Viewer({
+        container: document.querySelector("#viewer-container"),
+        navbar: ["autorotate", "zoom", "fullscreen"],
+        defaultPitch: -0.1, // Look slightly downward toward path
+        plugins: [
+          [PhotoSphereViewer.MarkersPlugin],
+          [
+            PhotoSphereViewer.VirtualTourPlugin,
+            {
+              renderMode: "3d", // Places navigation markers in 3D floor space
+              arrowPosition: "bottom",
+              transitionOptions: {
+                speed: "1500ms", // Smooth transition duration between locations
+                effect: "fade", // Smooth cross-fade transition
+              },
+              nodes: [
+                {
+                  id: "location-1",
+                  panorama:
+                    "https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg",
+                  name: "Outdoor Trail (Point A)",
+                  links: [
+                    {
+                      nodeId: "location-2",
+                      position: { pitch: -0.2, yaw: 0 },
+                    },
+                  ],
+                },
+                {
+                  id: "location-2",
+                  panorama:
+                    "https://photo-sphere-viewer-data.netlify.app/assets/sphere-test.jpg",
+                  name: "Indoor Area (Point B)",
+                  links: [
+                    {
+                      nodeId: "location-1",
+                      position: { pitch: -0.2, yaw: 3.14 },
+                    },
+                  ],
+                },
+              ],
+              startNodeId: "location-1",
+            },
+          ],
+        ],
+      });
+
+      // Kiosk Auto-Reset Logic (resets to Point A if left idle for 90s)
+      let idleTimer;
+      function resetIdleTimer() {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          const virtualTour = viewer.getPlugin(
+            PhotoSphereViewer.VirtualTourPlugin,
+          );
+          if (virtualTour) {
+            virtualTour.setCurrentNode("location-1");
+          }
+        }, 90000); // 90 seconds
+      }
+
+      window.addEventListener("touchstart", resetIdleTimer);
+      window.addEventListener("mousemove", resetIdleTimer);
+      resetIdleTimer();
+    </script>
+  </body>
+</html>

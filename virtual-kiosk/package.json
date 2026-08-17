@@ -1,0 +1,23 @@
+{
+  "name": "virtual-kiosk",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@photo-sphere-viewer/core": "^5.15.0",
+    "@photo-sphere-viewer/markers-plugin": "^5.15.0",
+    "@photo-sphere-viewer/virtual-tour-plugin": "^5.15.0",
+    "lucide-vue-next": "^1.0.0",
+    "three": "^0.185.1",
+    "vue": "^3.5.40"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.2.0"
+  }
+}
